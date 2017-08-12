@@ -1,0 +1,108 @@
+
+#shapeN{
+  position: absolute;
+  top: 50px;
+  left: 400px;
+  width: 300px;
+  height: 300px;
+  border-radius: 0 300px 0 0;
+  background-color: red;
+}
+
+#shapeN:hover{
+  cursor: pointer;
+  background-color: white;
+}
+
+#shapeE{
+  position: absolute;
+  top: 375px;
+  left: 400px;
+  width: 300px;
+  height: 300px;
+  border-radius: 0 0 300px 0;
+  background-color: blue;
+}
+#shapeE:hover{
+  cursor: pointer;
+  background-color: white;
+}
+
+#shapeS{
+  position: absolute;
+  top: 50px;
+  left: 75px;
+  width: 300px;
+  height: 300px;
+  border-radius: 300px 0 0 0;
+  background-color: green;
+}
+#shapeS:hover{
+  cursor: pointer;
+  background-color: white;
+}
+
+#shapeW{
+  position: absolute;
+  top: 375px;
+  left: 75px;
+  width: 300px;
+  height: 300px;
+  border-radius: 0 0 0 300px;
+  background-color: yellow;
+}
+#shapeW:hover{
+  cursor: pointer;
+  background-color: white;
+}
+
+#backShape{
+  position: absolute;
+  background-color: black;
+  width: 705px;
+  height: 705px;
+  top: 10px;
+  border-radius: 50%;
+  left:35px;
+}
+
+#centerCircle{
+  position: absolute;
+  width: 305px;
+  height: 305px;
+  background-color: white;
+  border: 30px solid black;
+  border-radius: 50%;
+  z-index: 1;
+  left:235px;
+  top: 205px;
+}
+.noSelect{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+ -moz-user-select: none;     /* Firefox all */
+ -ms-user-select: none;      /* IE 10+ */
+ user-select: none;
+}
+#label{
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  z-index: 2;
+  left: 350px;
+  top: 260px;
+}
+
+#display{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(214, 214, 214);
+  border-radius: 5px;
+  text-align: center;
+  left: 290px;
+  top: 320px;
+  z-index: 2;
+  line-height: 60px;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+}
