@@ -1,5 +1,4 @@
-
-#shapeN{
+#shapeN {
   position: absolute;
   top: 50px;
   left: 400px;
@@ -9,12 +8,12 @@
   background-color: red;
 }
 
-#shapeN:hover{
+#shapeN:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#shapeE{
+#shapeE {
   position: absolute;
   top: 375px;
   left: 400px;
@@ -23,12 +22,13 @@
   border-radius: 0 0 300px 0;
   background-color: blue;
 }
-#shapeE:hover{
+
+#shapeE:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#shapeS{
+#shapeS {
   position: absolute;
   top: 50px;
   left: 75px;
@@ -37,12 +37,13 @@
   border-radius: 300px 0 0 0;
   background-color: green;
 }
-#shapeS:hover{
+
+#shapeS:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#shapeW{
+#shapeW {
   position: absolute;
   top: 375px;
   left: 75px;
@@ -51,22 +52,23 @@
   border-radius: 0 0 0 300px;
   background-color: yellow;
 }
-#shapeW:hover{
+
+#shapeW:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#backShape{
+#backShape {
   position: absolute;
   background-color: black;
   width: 705px;
   height: 705px;
   top: 10px;
   border-radius: 50%;
-  left:35px;
+  left: 35px;
 }
 
-#centerCircle{
+#centerCircle {
   position: absolute;
   width: 305px;
   height: 305px;
@@ -74,16 +76,21 @@
   border: 30px solid black;
   border-radius: 50%;
   z-index: 1;
-  left:235px;
+  left: 235px;
   top: 205px;
 }
-.noSelect{
-  -webkit-user-select: none;  /* Chrome all / Safari all */
- -moz-user-select: none;     /* Firefox all */
- -ms-user-select: none;      /* IE 10+ */
- user-select: none;
+
+.noSelect {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
 }
-#label{
+
+#label {
   font-size: 25px;
   font-weight: bold;
   position: absolute;
@@ -92,7 +99,7 @@
   top: 260px;
 }
 
-#display{
+#display {
   position: absolute;
   width: 60px;
   height: 60px;
@@ -105,4 +112,113 @@
   line-height: 60px;
   font-size: 25px;
   color: rgb(255, 255, 255);
+  border: 1px solid rgb(170, 170, 170);
+}
+
+.circleLabel {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  z-index: 3;
+  left: 380px;
+  top: 330px;
+  border-radius: 50%;
+}
+
+.circleLabelOff {
+  border: 1px solid black;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 3;
+  left: 380px;
+  top: 330px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.strictLabel {
+  left: 440px;
+}
+
+.startLabel {
+  position: absolute;
+  z-index: 3;
+  left: 368px;
+  top: 355px;
+  border-radius: 50%;
+}
+
+.strict {
+  left: 430px;
+}
+
+.onoffswitch {
+  position: absolute;
+  left: 340px;
+  top: 400px;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  z-index: 4;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  border: 2px solid #999999;
+  border-radius: 30px;
+  background-color: #A6A6A6;
+  transition: background-color 0.3s ease-in;
+}
+
+.onoffswitch-label:before {
+  content: "";
+  display: block;
+  width: 30px;
+  margin: 0px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 58px;
+  border: 2px solid #999999;
+  border-radius: 30px;
+  transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label {
+  background-color: #CCCCCC;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label, .onoffswitch-checkbox:checked+.onoffswitch-label:before {
+  border-color: #CCCCCC;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label:before {
+  right: 0px;
+}
+
+
+.switchLabel{
+  position: absolute;
+  z-index: 5;
+  left: 310px;
+  top: 405px;
+  border-radius: 50%;
+}
+
+.switchLabelOn{
+  z-index: 5;
+  left: 435px;
 }
