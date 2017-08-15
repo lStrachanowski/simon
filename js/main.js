@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   startClick();
   strictClick();
   checboxCheck();
+  var idTable = ["shapeRed","shapeBlue","shapeGreen","shapeYellow"]
+  for(var i=0; i<idTable.length;i++){
+    colorClick(idTable[i]);
+  }
 });
 
 var startClick = () => {
@@ -27,5 +31,12 @@ var checboxCheck = () =>{
     }else{
       console.log("off");
     }
+  });
+}
+
+var colorClick = (color) =>{
+  var colorField = document.getElementById(color);
+  colorField.addEventListener('click', function(){
+    console.log(this.id);
   });
 }

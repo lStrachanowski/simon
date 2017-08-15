@@ -1,4 +1,4 @@
-#shapeN {
+#shapeRed {
   position: absolute;
   top: 50px;
   left: 400px;
@@ -8,12 +8,12 @@
   background-color: red;
 }
 
-#shapeN:hover {
+#shapeRed:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#shapeE {
+#shapeBlue {
   position: absolute;
   top: 375px;
   left: 400px;
@@ -23,12 +23,12 @@
   background-color: blue;
 }
 
-#shapeE:hover {
+#shapeBlue:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#shapeS {
+#shapeGreen {
   position: absolute;
   top: 50px;
   left: 75px;
@@ -38,12 +38,12 @@
   background-color: green;
 }
 
-#shapeS:hover {
+#shapeGreen:hover {
   cursor: pointer;
   background-color: white;
 }
 
-#shapeW {
+#shapeYellow {
   position: absolute;
   top: 375px;
   left: 75px;
@@ -53,7 +53,7 @@
   background-color: yellow;
 }
 
-#shapeW:hover {
+#shapeYellow:hover {
   cursor: pointer;
   background-color: white;
 }
