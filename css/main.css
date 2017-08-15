@@ -115,18 +115,8 @@
   border: 1px solid rgb(170, 170, 170);
 }
 
-.circleLabel {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  z-index: 3;
-  left: 380px;
-  top: 330px;
-  border-radius: 50%;
-}
 
-.circleLabelOff {
+.circleLabel {
   border: 1px solid black;
   position: absolute;
   width: 20px;
@@ -137,6 +127,11 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.circleLabel:hover {
+  background-color: red;
+}
+
 
 .strictLabel {
   left: 440px;
