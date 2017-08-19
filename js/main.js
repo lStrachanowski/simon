@@ -7,7 +7,17 @@ window.onload = function() {
 
   var startButton = document.getElementById("startCircle");
   startButton.addEventListener('click', function() {
-    console.log("start");
+          var level = 5;
+          if (level > 0) {
+
+            for (var i = 0; i < 5; i++) {
+              var tempColor = simon.idSequence[i].slice(2, simon.idSequence[i].length);
+
+              //Button blink
+              var j = i * 1000 + 1000;
+              buttonBlink(tempColor, j);
+            }
+          }
   });
 
   var strictButton = document.getElementById("strictCircle");
@@ -31,50 +41,31 @@ window.onload = function() {
 
     } else {
       //off
-
-      var level = 2;
-      if (level > 0) {
-
-        for (var i = 0; i < 2; i++) {
-          var tempColor = simon.idSequence[i].slice(2, simon.idSequence[i].length);
-
-          //Button blink
-
-
-
-          buttonBlink(tempColor);
-
-
-
-        }
-
-      }
       //Removes event listeners for color buttons.
       for (var i = 0; i < simon.colorList.length; i++) {
         colorClick(simon.colorList[i], i + 1, 1);
       }
-
-
     }
   });
 
 }
 
-var buttonBlink = (btn) => {
-  console.log(btn);
-  var currId = "id" + btn;
-  var currClass = "shape" + btn;
-  var currClassHover = "shape" + btn + "JS";
-
-  var t = document.getElementById(currId).classList;
-  var currColorSound = document.getElementById(currId).click();
-  t.remove(currClass);
-  t.add(currClassHover);
-  setTimeout(()=>{
-    t.remove(currClassHover);
-    t.add(currClass);
-  },300);
-
+//Button blink and sound
+var buttonBlink = (btn, j) => {
+  setTimeout(() => {
+    console.log(btn);
+    var currId = "id" + btn;
+    document.getElementById(currId).click();
+    var currClass = "shape" + btn;
+    var currClassHover = "shape" + btn + "JS";
+    var t = document.getElementById(currId).classList;
+    t.remove(currClass);
+    t.add(currClassHover);
+    setTimeout(() => {
+      t.remove(currClassHover);
+      t.add(currClass);
+    }, 400);
+  }, j);
 }
 
 var checkSequence = () => {
