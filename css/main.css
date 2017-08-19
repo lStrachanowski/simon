@@ -1,34 +1,59 @@
-#shapeRed {
+.shapeRed {
   position: absolute;
   top: 50px;
   left: 400px;
   width: 300px;
   height: 300px;
   border-radius: 0 300px 0 0;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
+  transition: 0.3s;
+
 }
 
-#shapeRed:hover {
+.shapeRed:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(252, 172, 172);
 }
 
-#shapeBlue {
+.shapeRedJS {
+  position: absolute;
+  top: 50px;
+  left: 400px;
+  width: 300px;
+  height: 300px;
+  border-radius: 0 300px 0 0;
+  transition: 0.3s;
+  background-color: rgb(252, 172, 172);
+}
+
+.shapeBlue {
   position: absolute;
   top: 375px;
   left: 400px;
   width: 300px;
   height: 300px;
   border-radius: 0 0 300px 0;
-  background-color: blue;
+  background-color: rgb(11, 0, 135);
+  transition: 0.3s;
 }
 
-#shapeBlue:hover {
+.shapeBlue:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(158, 170, 204);
 }
 
-#shapeGreen {
+.shapeBlueJS {
+  position: absolute;
+  top: 375px;
+  left: 400px;
+  width: 300px;
+  height: 300px;
+  border-radius: 0 0 300px 0;
+  background-color: rgb(158, 170, 204);
+  transition: 0.3s;
+}
+
+.shapeGreen {
   position: absolute;
   top: 50px;
   left: 75px;
@@ -36,26 +61,51 @@
   height: 300px;
   border-radius: 300px 0 0 0;
   background-color: green;
+  transition: 0.3s;
 }
 
-#shapeGreen:hover {
+.shapeGreenJS {
+  position: absolute;
+  top: 50px;
+  left: 75px;
+  width: 300px;
+  height: 300px;
+  border-radius: 300px 0 0 0;
+  background-color: rgb(205, 247, 151);
+  transition: 0.3s;
+}
+
+.shapeGreen:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(205, 247, 151);
 }
 
-#shapeYellow {
+.shapeYellow {
   position: absolute;
   top: 375px;
   left: 75px;
   width: 300px;
   height: 300px;
   border-radius: 0 0 0 300px;
-  background-color: yellow;
+  background-color: rgb(254, 251, 0);
+  transition: 0.3s;
 }
 
-#shapeYellow:hover {
+.shapeYellowJS {
+  position: absolute;
+  top: 375px;
+  left: 75px;
+  width: 300px;
+  height: 300px;
+  border-radius: 0 0 0 300px;
+  background-color: rgb(255, 255, 235);
+  transition: 0.3s;
+}
+
+
+.shapeYellow:hover {
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(255, 255, 235);
 }
 
 #backShape {
