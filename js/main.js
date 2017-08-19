@@ -4,50 +4,64 @@ window.onload = function() {
 
   simon.clickCount = 0;
   simon.colorList = ["idRed", "idBlue", "idGreen", "idYellow"];
+  simon.checbox = false;
+  simon.strict = false;
+
+  document.getElementById("startCircle").disabled = true;
 
   var startButton = document.getElementById("startCircle");
+
+
   startButton.addEventListener('click', function() {
-          var level = 5;
-          if (level > 0) {
-
-            for (var i = 0; i < 5; i++) {
-              var tempColor = simon.idSequence[i].slice(2, simon.idSequence[i].length);
-
-              //Button blink
-              var j = i * 1000 + 1000;
-              buttonBlink(tempColor, j);
-            }
+      if (simon.checbox == true) {
+        simon.checbox = false;
+        var level = 5;
+        if (level > 0) {
+          for (var i = 0; i < 5; i++) {
+            var tempColor = simon.idSequence[i].slice(2, simon.idSequence[i].length);
+            //Button blink
+            var j = i * 1000 + 1000;
+            buttonBlink(tempColor, j);
           }
-  });
-
-  var strictButton = document.getElementById("strictCircle");
-  strictButton.addEventListener('click', function() {
-    console.log("strict");
-  });
-
-  var checboxstate = document.getElementById("myonoffswitch");
-  checboxstate.addEventListener('click', function() {
-    if (checboxstate.checked == true) {
-      //on
-
-      //Register onclick evens for color buttons.
-      for (var i = 0; i < simon.colorList.length; i++) {
-        colorClick(simon.colorList[i], i + 1, 0);
+          setTimeout(()=>{simon.checbox = true},j);
+        }
       }
 
-      // Random color sequence
-      simon.sequnce = randomSequence();
-      simon.idSequence = checkSequence();
+  });
 
-    } else {
-      //off
-      //Removes event listeners for color buttons.
-      for (var i = 0; i < simon.colorList.length; i++) {
-        colorClick(simon.colorList[i], i + 1, 1);
-      }
+
+
+var strictButton = document.getElementById("strictCircle");
+strictButton.addEventListener('click', function() {
+
+});
+
+var checboxstate = document.getElementById("myonoffswitch");
+checboxstate.addEventListener('click', function() {
+  if (checboxstate.checked == true) {
+    simon.checbox = true;
+    //on
+    document.getElementById("display").innerHTML = "ON";
+    //Register onclick evens for color buttons.
+    for (var i = 0; i < simon.colorList.length; i++) {
+      colorClick(simon.colorList[i], i + 1, 0);
     }
-  });
 
+    // Random color sequence
+    simon.sequnce = randomSequence();
+    simon.idSequence = checkSequence();
+
+  } else {
+    //off
+    simon.checbox = false;
+    document.getElementById("display").innerHTML = "OFF";
+    //Removes event listeners for color buttons.
+    for (var i = 0; i < simon.colorList.length; i++) {
+      colorClick(simon.colorList[i], i + 1, 1);
+    }
+  }
+  console.log(simon);
+});
 }
 
 //Button blink and sound
