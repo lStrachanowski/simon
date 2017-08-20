@@ -2,33 +2,37 @@ var simon = {} || simon;
 
 window.onload = function() {
 
-  simon.clickCount = 0;
   simon.colorList = ["idRed", "idBlue", "idGreen", "idYellow"];
   simon.checbox = false;
   simon.strict = false;
+  simon.userClick = [];
+  simon.level = 1;
+  simon.compTurn = false;
+  simon.currSequence = [];
 
   document.getElementById("startCircle").disabled = true;
 
   var startButton = document.getElementById("startCircle");
-
-
   startButton.addEventListener('click', function() {
       if (simon.checbox == true) {
+        simon.userClick.length = 0;
+        simon.compTurn = true;
         simon.checbox = false;
-        var level = 5;
-        if (level > 0) {
-          for (var i = 0; i < 5; i++) {
+        console.log(simon.level);
+        if (simon.level > 0) {
+          for (var i = 0; i < simon.level; i++) {
             var tempColor = simon.idSequence[i].slice(2, simon.idSequence[i].length);
             //Button blink
             var j = i * 1000 + 1000;
             buttonBlink(tempColor, j);
           }
-          setTimeout(()=>{simon.checbox = true},j);
+          simon.currSequence = simon.idSequence.slice(0,i);
+          console.log(simon.currSequence);
+          setTimeout(()=>{simon.checbox = true; simon.compTurn = false},j);
         }
       }
 
   });
-
 
 
 var strictButton = document.getElementById("strictCircle");
@@ -60,14 +64,22 @@ checboxstate.addEventListener('click', function() {
       colorClick(simon.colorList[i], i + 1, 1);
     }
   }
-  console.log(simon);
 });
+};
+
+
+//Is comparing two arrays. When arrays contains the same values than return true.
+var compareArrays = (arrComp,arrUser) =>{
+  var result = (arrComp.length === arrUser.length) && arrComp.every(function(currentValue, index){
+    return currentValue === arrUser[index];
+  } );
+  return result;
 }
+
 
 //Button blink and sound
 var buttonBlink = (btn, j) => {
   setTimeout(() => {
-    console.log(btn);
     var currId = "id" + btn;
     document.getElementById(currId).click();
     var currClass = "shape" + btn;
@@ -80,16 +92,15 @@ var buttonBlink = (btn, j) => {
       t.add(currClass);
     }, 400);
   }, j);
-}
+};
 
 var checkSequence = () => {
   var res = [];
   for (var i = 0; i < simon.sequnce.length; i++) {
     res.push(simon.colorList[simon.sequnce[i]]);
   }
-  console.log(res);
   return res;
-}
+};
 
 //Is generating 21 random numbers which represents color buttons.
 var randomSequence = () => {
@@ -99,7 +110,7 @@ var randomSequence = () => {
     randTable.push(rand);
   }
   return randTable;
-}
+};
 
 //Register event listeners for color buttons.
 // i - sound number.
@@ -111,10 +122,25 @@ var colorClick = (color, i, a) => {
       var path = "../sounds/simonSound" + i + ".mp3";
       var audio = new Audio(path);
       audio.play();
-      simon.clickCount++;
+      if(simon.compTurn == false){
+        simon.userClick.push(color.id);
+
+        if(compareArrays(simon.currSequence,simon.userClick) === true ){
+          simon.level++;
+          document.getElementById("startCircle").click();
+          console.log("simon.level");
+          console.log(simon.level);
+        }
+        if((simon.currSequence.length == simon.userClick.length) && compareArrays(simon.currSequence,simon.userClick) === false){
+          document.getElementById("startCircle").click();
+          console.log("simon.level");
+          console.log(simon.level);
+        }
+      }
+
     };
   }
   if (a == 1) {
     color.onclick = false;
   }
-}
+};
