@@ -119,7 +119,7 @@ var colorClick = (color, i, a) => {
   var color = document.getElementById(color);
   if (a == 0) {
     color.onclick = function() {
-      var path = "../sounds/simonSound" + i + ".mp3";
+      var path = "https://s3.amazonaws.com/freecodecamp/simonSound" + i + ".mp3";
       var audio = new Audio(path);
       audio.play();
       if(simon.compTurn == false){
