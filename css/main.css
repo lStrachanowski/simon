@@ -186,6 +186,10 @@
   left: 440px;
 }
 
+.strictLabelOn {
+  background-color: red;
+}
+
 .startLabel {
   position: absolute;
   z-index: 3;

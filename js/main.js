@@ -9,6 +9,7 @@ window.onload = function() {
   simon.level = 1;
   simon.compTurn = false;
   simon.currSequence = [];
+  simon.strict = false;
 
   document.getElementById("startCircle").disabled = true;
 
@@ -18,7 +19,7 @@ window.onload = function() {
         simon.userClick.length = 0;
         simon.compTurn = true;
         simon.checbox = false;
-        console.log(simon.level);
+        document.getElementById("display").innerHTML = simon.level;
         if (simon.level > 0) {
           for (var i = 0; i < simon.level; i++) {
             var tempColor = simon.idSequence[i].slice(2, simon.idSequence[i].length);
@@ -37,6 +38,15 @@ window.onload = function() {
 
 var strictButton = document.getElementById("strictCircle");
 strictButton.addEventListener('click', function() {
+  var t = document.getElementById("strictCircle").classList;
+  if(simon.strict == false){
+    t.add("strictLabelOn");
+    simon.strict = true;
+  }else{
+    t.remove("strictLabelOn");
+    simon.strict = false;
+  }
+
 
 });
 
@@ -58,6 +68,7 @@ checboxstate.addEventListener('click', function() {
   } else {
     //off
     simon.checbox = false;
+    simon.level = 1;
     document.getElementById("display").innerHTML = "OFF";
     //Removes event listeners for color buttons.
     for (var i = 0; i < simon.colorList.length; i++) {
@@ -124,17 +135,20 @@ var colorClick = (color, i, a) => {
       audio.play();
       if(simon.compTurn == false){
         simon.userClick.push(color.id);
-
         if(compareArrays(simon.currSequence,simon.userClick) === true ){
           simon.level++;
           document.getElementById("startCircle").click();
-          console.log("simon.level");
-          console.log(simon.level);
         }
         if((simon.currSequence.length == simon.userClick.length) && compareArrays(simon.currSequence,simon.userClick) === false){
-          document.getElementById("startCircle").click();
-          console.log("simon.level");
-          console.log(simon.level);
+          if(simon.strict === false){
+            document.getElementById("startCircle").click();
+          }else {
+            simon.level = 1;
+            simon.sequnce = randomSequence();
+            simon.idSequence = checkSequence();
+            document.getElementById("startCircle").click();
+          }
+
         }
       }
 
