@@ -6,7 +6,7 @@ window.onload = function() {
   simon.checbox = false;
   simon.strict = false;
   simon.userClick = [];
-  simon.level = 1;
+  simon.level = 20;
   simon.compTurn = false;
   simon.currSequence = [];
   simon.strict = false;
@@ -28,7 +28,6 @@ window.onload = function() {
             buttonBlink(tempColor, j);
           }
           simon.currSequence = simon.idSequence.slice(0,i);
-          console.log(simon.currSequence);
           setTimeout(()=>{simon.checbox = true; simon.compTurn = false},j);
         }
       }
@@ -116,7 +115,7 @@ var checkSequence = () => {
 //Is generating 21 random numbers which represents color buttons.
 var randomSequence = () => {
   var randTable = [];
-  for (var i = 0; i < 21; i++) {
+  for (var i = 0; i < 20; i++) {
     var rand = Math.floor(Math.random() * 4);
     randTable.push(rand);
   }
@@ -137,18 +136,39 @@ var colorClick = (color, i, a) => {
         simon.userClick.push(color.id);
         if(compareArrays(simon.currSequence,simon.userClick) === true ){
           simon.level++;
-          document.getElementById("startCircle").click();
+          if(simon.level == 21){
+
+            // simon.level = 1;
+            simon.sequnce = randomSequence();
+            simon.idSequence = checkSequence();
+            setTimeout(()=>{
+              alert("Congratulations you won!!");
+            },500);
+            setTimeout(()=>{
+              simon.level = 1;
+              document.getElementById("startCircle").click();
+            },1000);
+          }else{
+            document.getElementById("startCircle").click();
+          }
         }
         if((simon.currSequence.length == simon.userClick.length) && compareArrays(simon.currSequence,simon.userClick) === false){
           if(simon.strict === false){
-            document.getElementById("startCircle").click();
+            document.getElementById("display").innerHTML = "!!";
+            wrong();
+            setTimeout(()=>{
+              document.getElementById("startCircle").click();
+            },1500);
           }else {
-            simon.level = 1;
-            simon.sequnce = randomSequence();
-            simon.idSequence = checkSequence();
-            document.getElementById("startCircle").click();
+              document.getElementById("display").innerHTML = "!!";
+                wrong();
+                setTimeout(()=>{
+                  simon.level = 1;
+                  simon.sequnce = randomSequence();
+                  simon.idSequence = checkSequence();
+                  document.getElementById("startCircle").click();
+            },1500);
           }
-
         }
       }
 
@@ -158,3 +178,12 @@ var colorClick = (color, i, a) => {
     color.onclick = false;
   }
 };
+
+//wrong sequence sound.
+var wrong = ()=>{
+  for(var i = 1; i<5; i++){
+    var path = "https://s3.amazonaws.com/freecodecamp/simonSound" + i + ".mp3";
+    var audio = new Audio(path);
+    audio.play();
+  }
+}
